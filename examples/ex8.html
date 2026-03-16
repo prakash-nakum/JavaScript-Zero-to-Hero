@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+
+    <title>Example 8</title>
+  </head>
+
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <section class="example">
+          <h2 class="text-2xl mb-4">Example 8.</h2>
+          <div class="inline-flex">
+            <button
+              class="m-2 p-5 bg-indigo-600 rounded text-white hover:bg-blue-900"
+              id="increment"
+              onclick="handleCounter('dec')"
+            >
+              -
+            </button>
+            <button class="p-5">
+              <p id="countvalue" value="0" class="text-center items-center">
+                0
+              </p>
+            </button>
+            <button
+              onclick="handleCounter('inc')"
+              id="decrement"
+              class="m-2 p-5 bg-indigo-600 rounded text-white hover:bg-blue-900"
+            >
+              +
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="ex8.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

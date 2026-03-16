@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+
+    <title>Example 5</title>
+  </head>
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <section class="example">
+          <div>
+            <h2 class="text-2xl mb-4">Example 5.</h2>
+
+            <select
+              id="converter"
+              class="border border-gray-400 px-2 py-1 mb-4"
+              onchange="handleDropdown(this)"
+            >
+              <option value="time">Time</option>
+              <option value="temperature">Temperature</option>
+            </select>
+            <div class="flex items-center">
+              <div class="mr-4">
+                <input
+                  oninput="handleTimeTem(this)"
+                  id="first-value"
+                  type="number"
+                  class="border border-gray-400 px-2 py-1 w-32"
+                />
+                <div id="convertfirst-text" class="text-sm mt-1">Second</div>
+              </div>
+
+              <span class="mx-2">=</span>
+
+              <div>
+                <input
+                  oninput="handleTimeTem(this)"
+                  id="second-value"
+                  type="number"
+                  class="border border-gray-400 px-2 py-1 w-32"
+                />
+                <div id="convertsecond-text" class="text-sm mt-1">Minute</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="ex5.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

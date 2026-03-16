@@ -1,0 +1,32 @@
+Diffrent ways of  get HTML Element  in js 
+
+ 
+
+
+
+
+https://nirravv.github.io/Hospital-Management-Html/about.html
+
+
+
+
+// let countervalue = document.getElementById("countNum").value;
+
+// function handleinc(e) {
+//   const el = e.target;
+//   el.previousElementSibling.textContent = ++countervalue;
+// }
+
+// function handledec(e) {
+//   const el = e.target;
+//   el.nextElementSibling.textContent = --countervalue;
+// }
+
+
+
+This looks good by passing the button as an argument However,
+the function doesn’t really need any arguments — the button already has its own context.
+Also, remember the earlier constraint about not using querySelector.
+Try to refactor this keeping in mind that the function already knows where it was triggered from.
+
+  

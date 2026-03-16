@@ -1,0 +1,22 @@
+#toast {
+  visibility: hidden;
+  min-width: 200px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  z-index: 51;
+  right: 30px;
+  top: 30px;
+}
+
+#toast.show {
+  visibility: visible;
+}
+
+.success {
+  background-color: green !important;
+  color: #fff;
+}

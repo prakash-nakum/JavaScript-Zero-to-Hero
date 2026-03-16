@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/toast.css" rel="stylesheet" />
+    <script src="https://unpkg.com/flowbite@1.8.1/dist/flowbite.min.js"></script>
+
+    <title>Example 17</title>
+  </head>
+
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <section
+          class="min-h-screen flex items-center justify-center bg-slate-200"
+        >
+          <div class="w-96 bg-white rounded-2xl shadow-2xl p-5">
+            <!-- action="../apis/files/file.php"
+            method="post" 
+            enctype="multipart/form-data"-->
+            <form id="userfile">
+              <div class="grid grid-cols-1 gap-4">
+                <div>
+                  <label class="text-sm text-gray-600">First Name</label>
+                  <input
+                    id="fname"
+                    name="lname"
+                    type="text"
+                    class="w-full border rounded p-2"
+                  />
+                  <span class="error text-red-600"></span>
+                </div>
+                <div>
+                  <label class="text-sm text-gray-600">Last Name</label>
+                  <input
+                    id="lname"
+                    type="text"
+                    name="lname"
+                    class="w-full border rounded p-2"
+                  />
+                  <span class="error text-red-600"></span>
+                </div>
+                <div>
+                  <label class="text-sm text-gray-600">Choose file</label>
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    class="w-full border rounded p-2"
+                  />
+                  <span class="error text-red-600"></span>
+                </div>
+              </div>
+              <div class="flex gap-4 mt-10">
+                <button
+                  id="file-form"
+                  class="flex-1 bg-gray-200 hover:bg-gray-400 p-3 rounded font-semibold"
+                  onclick="handleFormSubmit()"
+                  type="button"
+                  name="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div
+      id="view_model"
+      class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center"
+    >
+      <div class="bg-white w-[700px] rounded-lg p-6 space-y-4">
+        <div class="flex justify-center" id="view"></div>
+        <div class="flex gap-3">
+          <button
+            onclick="closeModel()"
+            class="flex-1 bg-gray-400 text-white p-3 rounded"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="toast"></div>
+    <script src="ex17.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

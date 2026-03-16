@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+
+    <title>Example 14 : Select2 Example</title>
+    <!-- jQuery JS -->
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <title>Example 14</title>
+  </head>
+
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen"
+      >
+        <h2 class="text-2xl text-center mb-4">Select2 Example</h2>
+        <!-- <div class="min-w-full"> -->
+        <p class="">Simple Select</p>
+        <select id="mySelect" name="state" class="w-full">
+          <option value="AL">Alabama</option>
+          <option value="WY">Wyoming</option>
+          <option value="CA">California</option>
+          <option value="TX">Texas</option>
+        </select>
+        <button
+          id="opendropdown"
+          class="p-1 my-4 bg-blue-200 border-2 border-blue-700 rounded-md hover:bg-white"
+        >
+          Opne
+        </button>
+
+        <button
+          id="closedropdown"
+          class="py-1 px-4 bg-red-200 border-2 border-red-700 rounded-md hover:bg-white"
+        >
+          Close
+        </button>
+        <p class="mt-6">Multiple Select</p>
+        <select
+          class="w-full"
+          id="multipleSelect"
+          multiple="multiple"
+          name="multiplestate"
+        >
+          <option value="AL">Alabama</option>
+          <option value="WY">Wyoming</option>
+          <option value="CA">California</option>
+          <option value="TX">Texas</option>
+        </select>
+
+        <button
+          id="appenddata"
+          class="p-1 my-4 bg-blue-200 border-2 border-blue-700 rounded-md hover:bg-white"
+        >
+          Set Alabama and Wyoming
+        </button>
+
+        <button
+          id="clear"
+          class="py-1 px-4 bg-red-200 border-2 border-red-700 rounded-md hover:bg-white"
+        >
+          Clear
+        </button>
+        <!-- </div> -->
+      </main>
+    </div>
+    <div id="toast"></div>
+    <script src="../script.js"></script>
+    <script src="ex14.js"></script>
+  </body>
+</html>

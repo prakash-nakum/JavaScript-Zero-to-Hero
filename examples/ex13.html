@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <title>Example 13</title>
+  </head>
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <div class="space-y-3">
+          <div id="movie-skeleton" class="grid grid-cols-4 gap-6"></div>
+        </div>
+        <section class="example">
+          <div id="movie-card" class="grid grid-cols-4 gap-4"></div>
+          <button
+            class="rounded bg-green-600 text-white p-2 mt-4 hover:bg-green-900"
+            onclick="handleNextPage()"
+          >
+            Load More
+          </button>
+        </section>
+      </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="ex13.js"></script>
+    <script src="../apis/movie.js"></script>
+  </body>
+</html>

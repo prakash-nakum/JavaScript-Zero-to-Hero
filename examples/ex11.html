@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="../css/toast.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <script src="https://unpkg.com/flowbite@1.8.1/dist/flowbite.min.js"></script>
+    <title>Example 11</title>
+  </head>
+
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <div class="relative">
+          <!-- <div class="relative overflow-x-auto"> -->
+          <div
+            class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4"
+          >
+            <div>
+              <div class="flex items-center gap-3">
+                <select
+                  onchange="handleEntries(this)"
+                  id="entriesSelect"
+                  class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                >
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </div>
+            <label for="table-search" class="sr-only">Search</label>
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none"
+              >
+                <svg
+                  class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                oninput="searchUserByName(this.value)"
+                type="text"
+                id="table-search"
+                class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for name"
+              />
+            </div>
+          </div>
+          <table
+            class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th
+                  scope="col"
+                  class="px-4 py-2 cursor-pointer"
+                  onclick="sortUserData('name')"
+                >
+                  Name ⬍
+                </th>
+                <th
+                  onclick="sortUserData('url')"
+                  scope="col"
+                  class="px-4 py-2 cursor-pointer"
+                >
+                  URl ⬍
+                </th>
+                <th
+                  onclick="sortUserData('funnel')"
+                  scope="col"
+                  class="px-4 py-2 cursor-pointer"
+                >
+                  Funnel ⬍
+                </th>
+                <th
+                  onclick="sortUserData('email')"
+                  scope="col"
+                  class="px-4 py-2 cursor-pointer"
+                >
+                  Email ⬍
+                </th>
+                <th scope="col" class="px-4 py-2">Members & Percentage</th>
+                <th scope="col" class="px-4 py-2">Action</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr>
+                <td colspan="5">
+                  <div
+                    id="skeleton_loaders"
+                    class="shadow rounded-md p-4 mx-auto"
+                  >
+                    <div class="animate-pulse flex space-x-4">
+                      <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                          <div class="grid grid-cols-3 gap-4">
+                            <div
+                              class="h-2 bg-slate-200 rounded col-span-2"
+                            ></div>
+                            <div
+                              class="h-2 bg-slate-200 rounded col-span-1"
+                            ></div>
+                          </div>
+                          <div class="h-2 bg-slate-200 rounded"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="overflow-x-auto">
+            <div
+              class="flex items-center justify-between px-4 py-3 border-t bg-white"
+            >
+              <div id="show-pagination" class="text-sm text-black"></div>
+              <div
+                id="pagination"
+                class="max-w-xl flex items-center gap-2"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- User Delete Model   -->
+    <div
+      id="delete_modal"
+      tabindex="-1"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+    >
+      <div class="relative w-full max-w-md p-4">
+        <div
+          class="relative bg-white border border-gray-200 rounded-xl shadow-lg"
+        >
+          <button
+            onclick="closeDeleteModal()"
+            type="button"
+            class="absolute top-3 right-3 text-gray-500 hover:bg-gray-200 hover:text-gray-800 rounded-lg w-9 h-9 flex items-center justify-center"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="p-6 text-center">
+            <svg
+              class="mx-auto mb-4 w-12 h-12 text-gray-400"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v4m0 4h.01M22 12A10 10 0 1 1 2 12a10 10 0 0 1 20 0Z"
+              />
+            </svg>
+            <h3 class="mb-6 text-gray-700 text-base font-medium">
+              Are you sure want to delete
+              <span id="delete-user-name" class="text-black font-bold"> </span>
+              user ?
+            </h3>
+            <div class="flex justify-center gap-4">
+              <button
+                onclick="handledeleteUser()"
+                class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Yes, I'm sure
+              </button>
+
+              <button
+                onclick="closeDeleteModal()"
+                class="text-gray-700 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg text-sm px-5 py-2.5"
+              >
+                No, cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- User Edit Model   -->
+    <!-- <div
+        id="edit_modal"
+        tabindex="-1"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      >
+        <div class="relative w-full max-w-4xl p-4">
+          <div class="bg-white border border-gray-200 rounded-xl shadow-lg p-6">
+            <div
+              class="flex items-center justify-between border-b border-default pb-4 md:pb-5"
+            >
+              <h3 class="text-lg font-medium text-heading">Edit User</h3>
+              <button
+                onclick="closeEditModal()"
+                type="button"
+                class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+              >
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18 17.94 6M18 18 6.06 6"
+                  />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <input type="hidden" id="edit_id" />
+            <div class="grid grid-cols-1 gap-4">
+              <div>
+                <label class="text-sm text-gray-600">Name</label>
+                <input
+                  id="edit_name"
+                  class="w-full border p-2 rounded"
+                  placeholder="Name"
+                />
+              </div>
+              <div>
+                <label class="text-sm text-gray-600">URL</label>
+                <input
+                  id="edit_url"
+                  class="w-full border p-2 rounded"
+                  placeholder="URL"
+                />
+              </div>
+              <div>
+                <label class="text-sm text-gray-600">Funnel</label>
+
+                <input
+                  id="edit_funnel"
+                  class="w-full border p-2 rounded"
+                  placeholder="Funnel"
+                />
+              </div>
+              <div>
+                <label class="text-sm text-gray-600">Email</label>
+                <input
+                  id="edit_email"
+                  class="w-full border p-2 rounded"
+                  placeholder="email"
+                />
+              </div>
+            </div>
+
+            <div class="flex justify-end gap-3 mt-6">
+              <button
+                onclick="closeEditModal()"
+                class="px-4 py-2 border rounded"
+              >
+                Cancel
+              </button>
+
+              <button
+                onclick="handleEditUser()"
+                class="px-4 py-2 bg-blue-600 text-white rounded"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    <div
+      id="edit_modal"
+      class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center"
+    >
+      <div class="bg-white w-[700px] rounded-lg p-6 space-y-4">
+        <h2 class="text-xl font-bold">Edit User</h2>
+
+        <input id="edit_id" type="hidden" />
+
+        <input id="edit_name" class="border p-2 w-full" placeholder="Name" />
+        <input id="edit_url" class="border p-2 w-full" placeholder="URL" />
+        <input
+          id="edit_funnel"
+          class="border p-2 w-full"
+          placeholder="Funnel"
+        />
+        <input id="edit_email" class="border p-2 w-full" placeholder="Email" />
+
+        <input
+          id="edit_password"
+          class="border p-2 w-full"
+          placeholder="Password"
+        />
+        <input
+          id="edit_confirpassword"
+          class="border p-2 w-full"
+          placeholder="Confirm Password"
+        />
+
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold">Members</h3>
+          <button
+            id="edit_add_row"
+            class="bg-blue-600 text-white px-3 py-1 rounded"
+          >
+            +
+          </button>
+        </div>
+
+        <div id="edit_membersWrap" class="space-y-3"></div>
+
+        <div class="flex gap-3">
+          <button
+            onclick="editUserSubmit()"
+            class="flex-1 bg-green-600 text-white p-3 rounded"
+          >
+            Update
+          </button>
+
+          <button
+            onclick="closeEditModal()"
+            class="flex-1 bg-gray-400 text-white p-3 rounded"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="../script.js"></script>
+    <script src="ex11.js"></script>
+  </body>
+</html>

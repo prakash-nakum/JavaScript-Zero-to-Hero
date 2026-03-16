@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/toast.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <title>Example 15</title>
+  </head>
+
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <h2 class="text-2xl text-center mb-4">
+          Draggable and Sortable Example
+        </h2>
+        <div class="grid grid-cols-2 gap-10 max-w-5xl mx-auto">
+          <ul
+            class="list-none p-0 [&>*]:cursor-move [&>*]:p-4 [&>*]:m-1 [&>*]:border-blue-300 [&>*]:border-2 w-50"
+            id="simple-list"
+          >
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+          </ul>
+
+          <ul
+            class="list-none p-0 [&>*]:cursor-move [&>*]:p-4 [&>*]:m-1 [&>*]:border-blue-300 [&>*]:border-2 w-50"
+            id="shared-list"
+          >
+            <li>Item 6</li>
+            <li>Item 7</li>
+            <li>Item 8</li>
+            <li>Item 9</li>
+            <li>Item 10</li>
+          </ul>
+        </div>
+        <div class="flex items-center justify-center mt-5">
+          <button
+            onclick="sortItem()"
+            class="rounded-md text-white p-2 border-2 bg-green-600"
+          >
+            Submit
+          </button>
+        </div>
+      </main>
+    </div>
+    <div id="toast"></div>
+    <script src="../script.js"></script>
+    <script src="ex15.js"></script>
+  </body>
+</html>

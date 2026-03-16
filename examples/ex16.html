@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+
+    <title>Example 16</title>
+  </head>
+
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <section
+          class="min-h-screen flex items-center justify-center bg-slate-200"
+        >
+          <div class="w-80 bg-white rounded-2xl shadow-2xl p-5">
+            <div class="bg-slate-100 rounded-xl p-4 mb-4">
+              <div
+                id="display"
+                class="text-right text-3xl font-semibold text-slate-800"
+              >
+                0
+              </div>
+            </div>
+            <div class="grid grid-cols-4 gap-3">
+              <button
+                class="bg-gray-300 hover:bg-gray-400 active:bg-gray-500 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleClear()"
+              >
+                AC
+              </button>
+
+              <button
+                class="bg-gray-300 hover:bg-gray-400 active:bg-gray-500 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleChangesSign()"
+              >
+                ±
+              </button>
+
+              <button
+                class="bg-gray-300 hover:bg-gray-400 active:bg-gray-500 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleOpration('%')"
+              >
+                %
+              </button>
+
+              <button
+                class="bg-orange-400 hover:bg-orange-500 active:bg-orange-600 transition transform rounded-xl py-4 text-lg font-semibold text-white"
+                onclick="handleOpration('/')"
+              >
+                ÷
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(7)"
+              >
+                7
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(8)"
+              >
+                8
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(9)"
+              >
+                9
+              </button>
+
+              <button
+                class="bg-orange-400 hover:bg-orange-500 active:bg-orange-600 transition transform rounded-xl py-4 text-lg font-semibold text-white"
+                onclick="handleOpration('*')"
+              >
+                ×
+              </button>
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(4)"
+              >
+                4
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(5)"
+              >
+                5
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(6)"
+              >
+                6
+              </button>
+
+              <button
+                class="bg-orange-400 hover:bg-orange-500 active:bg-orange-600 transition transform rounded-xl py-4 text-lg font-semibold text-white"
+                onclick="handleOpration('-')"
+              >
+                −
+              </button>
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(1)"
+              >
+                1
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(2)"
+              >
+                2
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(3)"
+              >
+                3
+              </button>
+
+              <button
+                class="bg-orange-400 hover:bg-orange-500 active:bg-orange-600 transition transform rounded-xl py-4 text-lg font-semibold text-white"
+                onclick="handleOpration('+')"
+              >
+                +
+              </button>
+              <button
+                class="col-span-2 bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber(0)"
+              >
+                0
+              </button>
+
+              <button
+                class="bg-slate-200 hover:bg-slate-300 active:bg-slate-400 transition transform rounded-xl py-4 text-lg font-medium"
+                onclick="handleNumber('.')"
+              >
+                .
+              </button>
+
+              <button
+                class="bg-green-500 hover:bg-green-600 active:bg-green-700 transition transform rounded-xl py-4 text-lg font-semibold text-white"
+                onclick="calculate()"
+              >
+                =
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="ex16.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/toast.css" rel="stylesheet" />
+    <title>Example 10</title>
+  </head>
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <form id="userinfo" method="post" action="form.php">
+          <div class="grid grid-cols-1 gap-4">
+            <div>
+              <label class="text-sm text-gray-600">Name</label>
+              <input id="name" type="text" class="w-full border rounded p-2" />
+              <span class="error text-red-600"></span>
+            </div>
+
+            <div>
+              <label class="text-sm text-gray-600">URL</label>
+              <input id="url" type="text" class="w-full border rounded p-2" />
+              <span class="error text-red-600"></span>
+            </div>
+
+            <div>
+              <label class="text-sm text-gray-600">Funnel</label>
+              <input
+                id="funnel"
+                type="text"
+                class="w-full border rounded p-2"
+              />
+              <span class="error text-red-600"></span>
+            </div>
+
+            <div>
+              <label class="text-sm text-gray-600">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="w-full border rounded p-2"
+                value=""
+              />
+              <span class="error text-red-600"></span>
+            </div>
+
+            <div>
+              <label class="text-sm text-gray-600">Password</label>
+              <input
+                id="password"
+                type="password"
+                class="w-full border rounded p-2"
+                autocomplete="on"
+              />
+              <span class="error text-red-600"></span>
+            </div>
+
+            <div>
+              <label class="text-sm text-gray-600">Password Confirmation</label>
+              <input
+                id="confirmpassword"
+                autocomplete="on"
+                type="password"
+                class="w-full border rounded p-2"
+              />
+              <span class="error text-red-600"></span>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button
+              type="button"
+              id="addBtn"
+              onclick="addRow()"
+              class="m-2 p-2 bg-blue-600 text-white rounded hover:bg-blue-900"
+            >
+              +
+            </button>
+          </div>
+
+          <div id="membersWrap" class="mt-8 space-y-4">
+            <div
+              data-member="member"
+              class="members-percentage flex items-end gap-4 member-row"
+            >
+              <div class="flex-1">
+                <label class="text-sm text-gray-600">Number Of Members</label>
+                <input
+                  type="number"
+                  class="members w-full border rounded p-2"
+                />
+                <span class="text-red-600"></span>
+              </div>
+              <div class="flex-1">
+                <label class="text-sm text-gray-600">Percentage</label>
+                <input
+                  name="percentage"
+                  type="number"
+                  class="percentage w-full border rounded p-2"
+                />
+                <span class="error text-red-600"></span>
+              </div>
+              <button
+                type="button"
+                id="removeBtn"
+                onclick="removeRow(this)"
+                class="removeBtn m-2 p-2 text-white bg-red-500 rounded hover:bg-red-900"
+              >
+                −
+              </button>
+            </div>
+          </div>
+
+          <div class="flex gap-4 mt-10">
+            <button
+              id="form-submit-button"
+              onclick="handleFormSubmit()"
+              class="flex-1 bg-gray-200 hover:bg-gray-400 p-3 rounded font-semibold"
+              type="button"
+            >
+              SAVE
+            </button>
+
+            <button
+              id="form-cancle-button"
+              class="flex-1 bg-gray-200 hover:bg-gray-400 p-3 rounded font-semibold"
+              type="button"
+            >
+              CANCEL
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div id="toast"></div>
+    <script src="ex10.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

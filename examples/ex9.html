@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+
+    <title>Example 9</title>
+  </head>
+
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <section class="example">
+          <h2 class="text-2xl mb-4">Example 9.</h2>
+          <div class="inline-flex">
+            <div>
+              <button
+                class="m-2 p-4 bg-amber-600 rounded text-white hover:bg-blue-900"
+                onclick="addCounter()"
+              >
+                New
+              </button>
+            </div>
+            <div id="counters-container" class="grid grid-cols-3 gap-2"></div>
+          </div>
+          <div id="counter-template" style="display: none">
+            <div class="counter">
+              <button
+                data-action="downBTN"
+                class="down-btn m-2 p-2 bg-indigo-600 rounded text-white hover:bg-blue-900"
+                name="downBtn"
+                id="downBTN"
+                onclick="incrementOrdecrement.call(this, 'decrement')"
+              >
+                -
+              </button>
+              <button id="countMain">
+                <input
+                  id="count_Num"
+                  class="w-16 border border-gray-400 px-2 py-1 focus:outline-none focus:border-blue-600"
+                  type="number"
+                  data-count="countValue"
+                  value="0"
+                />
+              </button>
+              <button
+                id="upBTN"
+                data-btn-type="upBTN"
+                class="up-btn m-2 p-2 bg-indigo-600 rounded text-white hover:bg-blue-900"
+                onclick="incrementOrdecrement.call(this, 'increment')"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="ex9.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

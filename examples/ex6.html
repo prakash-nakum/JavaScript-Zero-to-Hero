@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/common.css" rel="stylesheet" />
+
+    <title>Example 6</title>
+  </head>
+  <body class="font-mono">
+    <div class="flex min-h-screen">
+      <div id="layout"></div>
+      <main
+        class="flex-1 bg-white rounded-2xl shadow-lg p-8 mx-auto w-full h-screen overflow-y-auto no-scrollbar"
+      >
+        <section class="example">
+          <div class="max-w-xl">
+            <h2 class="text-2xl mb-4">6. RGB Color Chooser</h2>
+            <div
+              id="colorPreview"
+              class="w-full h-10 mb-6 border border-gray-300"
+              style="background-color: rgb(188, 184, 131)"
+            ></div>
+            <div class="flex items-center gap-3 mb-4">
+              <label class="w-6">R:</label>
+              <input
+                id="rValue"
+                type="number"
+                min="0"
+                max="255"
+                value="188"
+                class="w-16 border border-gray-400 px-1 py-0.5 text-sm"
+                oninput="updateColor()"
+              />
+              <input
+                id="rRange"
+                type="range"
+                min="0"
+                max="255"
+                value="188"
+                class="flex-1 accent-red-600"
+                oninput="updateColorByRange('r')"
+              />
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <label class="w-6">G:</label>
+              <input
+                id="gValue"
+                type="number"
+                min="0"
+                max="255"
+                value="184"
+                class="w-16 border border-gray-400 px-1 py-0.5 text-sm"
+                oninput="updateColor()"
+              />
+              <input
+                id="gRange"
+                type="range"
+                min="0"
+                max="255"
+                value="184"
+                class="flex-1 accent-green-600"
+                oninput="updateColorByRange('g')"
+              />
+            </div>
+            <div class="flex items-center gap-3">
+              <label class="w-6">B:</label>
+              <input
+                id="bValue"
+                type="number"
+                min="0"
+                max="255"
+                value="131"
+                class="w-16 border border-gray-400 px-1 py-0.5 text-sm"
+                oninput="updateColor()"
+              />
+              <input
+                id="bRange"
+                type="range"
+                min="0"
+                max="255"
+                value="131"
+                class="flex-1 accent-blue-600"
+                oninput="updateColorByRange('b')"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="ex6.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>
